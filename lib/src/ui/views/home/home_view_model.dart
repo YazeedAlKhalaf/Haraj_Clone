@@ -22,11 +22,20 @@ class HomeViewModel extends CustomBaseViewModel {
     notifyListeners();
   }
 
+  int _currentRightSideIndex = 0;
+  int get currentRightSideIndex => _currentRightSideIndex;
+  void setCurrentRightSideIndex(int newValue) {
+    _currentRightSideIndex = newValue;
+    notifyListeners();
+  }
+
   Future<void> getAds({int pageNumber = 1}) async {
+    setBusy(true);
     List<Ad> adsListFromApi = await _apiService.getAds(
       pageNumber: pageNumber,
     );
     _setAdsList(adsListFromApi);
+    setBusy(false);
   }
 
   Future<void> navigateToAdView({

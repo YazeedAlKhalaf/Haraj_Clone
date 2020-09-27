@@ -50,11 +50,13 @@ class AdView extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text(
-                ad.title,
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.headline4,
+              Expanded(
+                child: Text(
+                  ad.title,
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
               ),
             ],
           );
@@ -64,11 +66,13 @@ class AdView extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text(
-                ad.body.trim(),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.subtitle1,
+              Expanded(
+                child: Text(
+                  ad.body.trim(),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
               ),
             ],
           );
@@ -138,7 +142,11 @@ class AdView extends StatelessWidget {
             bodyPadding: const EdgeInsets.all(0),
             body: CustomScrollView(
               slivers: [
-                SliverAppBar(),
+                showAppBar
+                    ? SliverAppBar()
+                    : SliverToBoxAdapter(
+                        child: SizedBox.shrink(),
+                      ),
                 SliverToBoxAdapter(
                   child: Container(
                     padding: EdgeInsets.all(blockSize(context) * 2),
