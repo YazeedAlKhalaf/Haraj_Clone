@@ -84,10 +84,7 @@ class Skeleton extends StatelessWidget {
                   : null,
               body: SafeArea(
                 child: Container(
-                  constraints: constraints ??
-                      BoxConstraints(
-                        maxWidth: 768.0,
-                      ),
+                  constraints: constraints ?? null,
                   padding: bodyPadding ??
                       EdgeInsets.fromLTRB(
                         blockSize(context) * 2,
