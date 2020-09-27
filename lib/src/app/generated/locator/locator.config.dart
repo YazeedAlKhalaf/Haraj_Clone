@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../../services/api_service.dart';
+import '../../services/shared_prefs/shared_prefs_Service.dart';
 import '../../services/third_party_services_module.dart';
 import '../../services/url_launcher_service.dart';
 import '../../utils/utils.dart';
@@ -27,6 +28,7 @@ GetIt $initGetIt(
   gh.lazySingleton<DialogService>(() => thirdPartyServicesModule.dialogService);
   gh.lazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
+  gh.lazySingleton<SharedPrefsService>(() => SharedPrefsService());
   gh.lazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackBarService);
   gh.factory<UrlLauncherService>(() => UrlLauncherService());

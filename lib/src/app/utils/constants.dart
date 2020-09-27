@@ -1,4 +1,3 @@
 class Constants {
-  /// For Example
-  /// static const String MY_AWESOME_CONSTANT = 'yazeed';
+  static const String themeModeKey = 'theme_mode_haraj_clone';
 }

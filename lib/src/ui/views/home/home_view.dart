@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:haraj_clone/src/app/models/ad.model.dart';
 import 'package:haraj_clone/src/ui/global/ui_helpers.dart';
 import 'package:haraj_clone/src/ui/views/ad/ad_view.dart';
 import 'package:haraj_clone/src/ui/widgets/dumb/responsive.dart';
 import 'package:stacked/stacked.dart';
 import 'package:haraj_clone/src/ui/widgets/dumb/skeleton.dart';
+import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 import './home_view_model.dart';
 
@@ -77,6 +79,42 @@ class HomeView extends StatelessWidget {
           );
         }
 
+        _buildChangeThemeButtons() {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.sun,
+                  // color: Colors.white,
+                ),
+                onPressed: () {
+                  if (ThemeModeHandler.of(context).themeMode !=
+                      ThemeMode.light) {
+                    ThemeModeHandler.of(context).saveThemeMode(
+                      ThemeMode.light,
+                    );
+                  }
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.moon,
+                  // color: Colors.white,
+                ),
+                onPressed: () {
+                  if (ThemeModeHandler.of(context).themeMode !=
+                      ThemeMode.dark) {
+                    ThemeModeHandler.of(context).saveThemeMode(
+                      ThemeMode.dark,
+                    );
+                  }
+                },
+              ),
+            ],
+          );
+        }
+
         return Skeleton(
           isBusy: model.isBusy,
           body: model.adsList.isEmpty
@@ -86,9 +124,18 @@ class HomeView extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'إعلانات حراج',
-                      style: Theme.of(context).textTheme.headline4,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _buildChangeThemeButtons(),
+                        Text(
+                          'إعلانات حراج',
+                          style: Theme.of(context).textTheme.headline4.copyWith(
+                                color:
+                                    Theme.of(context).textTheme.bodyText1.color,
+                              ),
+                        ),
+                      ],
                     ),
                     verticalSpaceSmall(context),
                     Expanded(
