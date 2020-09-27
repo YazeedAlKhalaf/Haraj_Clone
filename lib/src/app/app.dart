@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "haraj_clone",
+      title: "Haraj Clone",
       initialRoute: RouterGR.Routes.startupView,
       onGenerateRoute: RouterGR.Router().onGenerateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
