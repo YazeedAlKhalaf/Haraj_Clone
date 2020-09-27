@@ -10,6 +10,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import '../../services/api_service.dart';
 import '../../services/third_party_services_module.dart';
+import '../../services/url_launcher_service.dart';
 import '../../utils/utils.dart';
 
 /// adds generated dependencies
@@ -28,6 +29,7 @@ GetIt $initGetIt(
       () => thirdPartyServicesModule.navigationService);
   gh.lazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackBarService);
+  gh.factory<UrlLauncherService>(() => UrlLauncherService());
   gh.lazySingleton<Utils>(() => Utils());
   return get;
 }

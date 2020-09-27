@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:haraj_clone/src/app/models/ad.model.dart';
 import 'package:haraj_clone/src/app/models/ads_list_response.model.dart';
 import 'package:haraj_clone/src/app/utils/logger.dart';

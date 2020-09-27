@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:haraj_clone/src/app/generated/locator/locator.dart';
+import 'package:haraj_clone/src/app/generated/router/router.gr.dart';
 import 'package:haraj_clone/src/app/models/ad.model.dart';
 import 'package:haraj_clone/src/app/services/api_service.dart';
 import 'package:haraj_clone/src/ui/global/custom_base_view_model.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends CustomBaseViewModel {
+  final NavigationService _navigationService = locator<NavigationService>();
   final ApiService _apiService = locator<ApiService>();
 
   List<Ad> _adsList = <Ad>[];
@@ -23,5 +27,16 @@ class HomeViewModel extends CustomBaseViewModel {
       pageNumber: pageNumber,
     );
     _setAdsList(adsListFromApi);
+  }
+
+  Future<void> navigateToAdView({
+    @required Ad ad,
+  }) async {
+    await _navigationService.navigateTo(
+      Routes.adView,
+      arguments: AdViewArguments(
+        ad: ad,
+      ),
+    );
   }
 }

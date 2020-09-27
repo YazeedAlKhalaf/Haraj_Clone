@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:haraj_clone/src/app/generated/locator/locator.dart';
-import 'package:haraj_clone/src/app/generated/router/router.gr.dart' as RouterGR;
+import 'package:haraj_clone/src/app/generated/router/router.gr.dart'
+    as RouterGR;
 import 'package:stacked_services/stacked_services.dart';
 
 class App extends StatelessWidget {
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
       navigatorKey: locator<NavigationService>().navigatorKey,
       theme: ThemeData(
         brightness: Brightness.light,
+        primaryColor: Colors.white,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,

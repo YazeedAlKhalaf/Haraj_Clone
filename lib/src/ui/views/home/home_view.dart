@@ -64,7 +64,11 @@ class HomeView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onTap: () {},
+                            onTap: () async {
+                              await model.navigateToAdView(
+                                ad: ad,
+                              );
+                            },
                           );
                         },
                       )
